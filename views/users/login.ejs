@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="content-type"
+            content="text/html"; charset="UTF-8">
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+
+    <body>
+        <head>
+            <h1><%= title %></h1>
+        </head>
+        <div role="main">
+            <p><%- content %></p>
+            <form method="POST" action="/users/login">
+            <table>
+                <tr>
+                    <th>EMAIL</th>
+                    <td><input type="text" name="email" value="<%= form.email %>"></td>
+                </tr>
+                <tr>
+                    <th>PASSWORD</th>
+                    <td><input type="password" name="password" value="<%= form.password %>"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="Login"></td>
+                </tr>
+            </table>
+            </form>
+            <a href="/users/signup">Create Account&gt;&gt;</a>
+            </p>
+        </div>
+    </body>
+
+</html>

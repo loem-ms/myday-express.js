@@ -1,0 +1,16 @@
+var express = require('express');
+var router = express.Router();
+
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  if (req.session.login == null){
+    res.redirect('/users');
+  }else{
+    console.log('login success: redirect to tasks/1');
+    res.redirect('/tasks');
+  }
+});
+
+
+module.exports = router;

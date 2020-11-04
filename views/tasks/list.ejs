@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p> <%= content %></p>
+
+    <ul>
+      <% for (var i in tasks) { %>
+        <div class="task-item">
+        <li style="font-size: larger;"><a href="/tasks/<%= tasks[i].id%>/edit"><%= tasks[i].title %></a></li>
+        <ul>
+          <li>Course  : <%= tasks[i].course %></li>
+          <li>Priority  : <%= tasks[i].priority %></li>
+          <% var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }; %>
+          <li style="color: red;">Deadline  :<%= tasks[i].deadline.toLocaleString('en-GB') %></li>
+          <% if(tasks[i].comment != '') { %>
+            <li>Comment  : <%= tasks[i].comment %></li>
+          <% } %>
+        </ul>
+        <div class="button-container">
+        <form method="GET" action="/tasks/<%= tasks[i].id %>/edit">
+            <button type="submit">Edit</button>
+        </form>
+        <form method="POST" action="/tasks/<%= tasks[i].id %>/delete">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+      <br>
+    </div>
+      <% } %>
+    </ul>
+
+    <p>
+      <a href="/tasks/1/create">Add Task</a>|
+      <a href="/users/logout">Logout</a>
+    </p>
+    
+  </body>
+</html>
